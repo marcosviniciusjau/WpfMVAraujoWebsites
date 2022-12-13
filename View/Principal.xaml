@@ -43,7 +43,10 @@
             <Border Grid.Row="3" Style="{StaticResource BrdMenu}"/>
 
         </Grid>
-        <UserControls:UsProdutos Grid.Column="1"/>
+        <UserControls:UcProdutos Grid.Column="1"/>
+
+
+
 
 
 

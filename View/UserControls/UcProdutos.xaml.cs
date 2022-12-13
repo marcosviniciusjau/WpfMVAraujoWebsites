@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WpfAppSti3.View.UserControls
 {
     /// <summary>
-    /// Interação lógica para UsProdutos.xam
+    /// Interação lógica para UcProdutos.xam
     /// </summary>
-    public partial class UsProdutos : UserControl
+    public partial class UcProdutos : UserControl
     {
-        public UsProdutos()
+        public UcProdutos()
         {
             InitializeComponent();
         }
