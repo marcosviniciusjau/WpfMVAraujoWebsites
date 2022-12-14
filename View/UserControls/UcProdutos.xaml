@@ -9,13 +9,13 @@
     <Grid Background="#EBEBEB">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="80"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Content="Produtos" FontWeight="Bold" FontSize="20" Foreground="#032338"/>
         <Border Style="{StaticResource BrdTituloTelas}"/>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="10"/>
@@ -25,17 +25,25 @@
             </Grid.ColumnDefinitions>
             <StackPanel>
                 <Label Content="Nome"/>
-                <TextBox/>
+                <TextBox Text="{Binding Nome}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="2">
                 <Label Content="Valor"/>
-                <TextBox/>
+                <TextBox Text="{Binding Valor}"/>
             </StackPanel>
 
-            <Button Grid.Column="4"
+            <Button Grid.Column="4" x:Name="BtnAdicionar"
                     Content="Adicionar" Background="Green" Foreground="White" HorizontalAlignment="Left"
-                    VerticalAlignment="Bottom" Margin="0,0,0,10" Height="25" Width="150"/>
+                    VerticalAlignment="Bottom" Margin="0,0,0,10"
+                    Height="25" Width="150"
+                    Style="{StaticResource BtnArredondado}" Click="BtnAdicionar_Click"/>
         </Grid>
+
+
+        <ItemsControl Grid.Row="2" Background="White" BorderBrush="Gray" BorderThickness="1" Margin="10">
+            
+        </ItemsControl>
+        
     </Grid>
 </UserControl>
