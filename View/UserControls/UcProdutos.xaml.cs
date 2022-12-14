@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfAppSti3.View.UserControls;
+using WpfAppSti3.ViewModel;
 
 namespace WpfAppSti3.View.UserControls
 {
