@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -31,12 +32,27 @@ namespace WpfAppSti3.View.UserControls
             InitializeComponent();
 
             DataContext = UcProdutoVm;
-            UcProdutoVm.Nome = "Produto 1";
+            UcProdutoVm.ProdutosAdicionados = new ObservableCollection<ProdutoViewModel>
+            {
+                new ProdutoViewModel { Nome = "Tênis" , Valor=10 },
+                 new ProdutoViewModel { Nome = "Camiseta", Valor = 10 },
+                  new ProdutoViewModel { Nome = "Shorts", Valor = 10 }
+            };
         }
 
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
         {
            
+        }
+
+        private void BtnAlterar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnRemover_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

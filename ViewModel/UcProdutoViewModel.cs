@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,5 +36,17 @@ namespace WpfAppSti3.ViewModel
             }
         }
 
+        private ObservableCollection<ProdutoViewModel> _produtosAdicionados;
+
+        public ObservableCollection<ProdutoViewModel> ProdutosAdicionados 
+        {
+          get => _produtosAdicionados;
+            set
+            {
+                _produtosAdicionados = value;
+
+                OnPropertyChanged(nameof(ProdutosAdicionados));
+    }
+}
     }
 }

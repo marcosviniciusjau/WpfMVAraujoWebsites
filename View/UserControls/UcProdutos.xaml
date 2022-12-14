@@ -41,8 +41,38 @@
         </Grid>
 
 
-        <ItemsControl Grid.Row="2" Background="White" BorderBrush="Gray" BorderThickness="1" Margin="10">
-            
+        <ItemsControl Grid.Row="2" Background="White" BorderBrush="Gray" BorderThickness="1" Margin="10"
+                      ItemsSource="{Binding ProdutosAdicionados}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="210"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Nome}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Valor, ConverterCulture=pt-BR , StringFormat=#/.##0.00}"/>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Height="25" Margin="0,0,0,5">
+                            
+                            <Button x:Name="BtnAlterar" Tag="{Binding}"
+                    Content="Alterar" Background="blue" Foreground="White" 
+                    Width="100"
+                    Style="{StaticResource BtnArredondado}" Click="BtnAlterar_Click"/>
+                            
+                            <Button Grid.Column="4" x:Name="BtnRemover"
+                    Content="Remover" Background="red" Foreground="White" HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom" Margin="10,0,0,0"
+                    Height="25" Width="100"
+                    Style="{StaticResource BtnArredondado}" Click="BtnRemover_Click"/>
+                        </StackPanel>
+
+                        <Border Grid.ColumnSpan="3" Style="{StaticResource BrdSeparadorItens}" />
+                    </Grid>
+                  
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
         </ItemsControl>
         
     </Grid>
