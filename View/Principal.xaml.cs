@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using WpfAppSti3.View.UserControls;
+
 namespace WpfAppSti3.View
 {
     /// <summary>
@@ -22,6 +24,35 @@ namespace WpfAppSti3.View
         public Principal()
         {
             InitializeComponent();
+        }
+
+        private void BtnMenu_Click(object sender, RoutedEventArgs e)
+        {
+            InicializarUc(sender);
+        }
+
+        private void InicializarUc(object sender)
+        {
+            if(sender is Button btn)
+              {
+                switch (btn.Name)
+                {
+                    case nameof(BtnProdutos):
+                        Conteudo.Content = new UcProdutos();
+                        break;
+
+                        case nameof(BtnClientes):
+                        Conteudo.Content = new UcClientes();
+                        break;
+
+                    case nameof(BtnPedidos):
+                        //new UcClientes();
+                        break;
+                    default:
+                        break;
+                }           
+
+            }
         }
     }
 }
