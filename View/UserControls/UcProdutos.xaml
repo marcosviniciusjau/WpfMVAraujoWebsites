@@ -30,14 +30,26 @@
 
             <StackPanel Grid.Column="2">
                 <Label Content="Valor"/>
-                <TextBox Text="{Binding Valor}"/>
+                <TextBox Text="{Binding Valor}"
+                         PreviewTextInput="TxtValor_PreviewTextInput"/>
             </StackPanel>
 
             <Button Grid.Column="4" x:Name="BtnAdicionar"
-                    Content="Adicionar" Background="Green" Foreground="White" HorizontalAlignment="Left"
+                    Background="Green" Foreground="White" HorizontalAlignment="Left"
                     VerticalAlignment="Bottom" Margin="0,0,0,10"
                     Height="25" Width="150"
-                    Style="{StaticResource BtnArredondado}" Click="BtnAdicionar_Click"/>
+                   Click="BtnAdicionar_Click">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource BtnArredondado}">
+                        <Setter Property="Content" Value="Adicionar"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Alteracao}" Value="True">
+                                <Setter Property="Content" Value="Salvar"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </Grid>
 
 
@@ -52,7 +64,7 @@
                             <ColumnDefinition Width="210"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding Nome}"/>
-                        <TextBlock Grid.Column="1" Text="{Binding Valor, ConverterCulture=pt-BR , StringFormat=#/.##0.00}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Valor, ConverterCulture=pt-BR, StringFormat=#\.#0.}"/>
 
                         <StackPanel Grid.Column="2" Orientation="Horizontal" Height="25" Margin="0,0,0,5">
                             

@@ -36,6 +36,19 @@ namespace WpfAppSti3.ViewModel
             }
         }
 
+        private bool _alteracao;
+
+        public bool Alteracao
+        {
+            get => _alteracao;
+            set
+            {
+                _alteracao = value;
+
+                OnPropertyChanged(nameof(Alteracao));
+            }
+        }
+
         private ObservableCollection<ProdutoViewModel> _produtosAdicionados;
 
         public ObservableCollection<ProdutoViewModel> ProdutosAdicionados 

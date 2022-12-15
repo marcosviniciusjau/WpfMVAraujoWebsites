@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,28 +33,90 @@ namespace WpfAppSti3.View.UserControls
             InitializeComponent();
 
             DataContext = UcProdutoVm;
-            UcProdutoVm.ProdutosAdicionados = new ObservableCollection<ProdutoViewModel>
-            {
-                new ProdutoViewModel { Nome = "Tênis" , Valor=10 },
-                 new ProdutoViewModel { Nome = "Camiseta", Valor = 10 },
-                  new ProdutoViewModel { Nome = "Shorts", Valor = 10 }
-            };
+            UcProdutoVm.ProdutosAdicionados = new ObservableCollection<ProdutoViewModel>();
+          
         }
 
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
         {
-           
+            if (!ValidarProduto())
+                return;
+
+            if (UcProdutoVm.Alteracao)
+            {
+                AlterarProduto();
+            }
+            else
+            {
+                AdicionarProduto();
+            }
+            LimparCampo();
         }
 
         private void BtnAlterar_Click(object sender, RoutedEventArgs e)
         {
+            var produto = (sender as Button).Tag as ProdutoViewModel;
+            PreencherCampo(produto);
+        }
+
+        private void AdicionarProduto()
+        {
+           
+            var novoProduto = new ProdutoViewModel
+            {
+                Nome = UcProdutoVm.Nome,
+                Valor = UcProdutoVm.Valor
+            };
+
+            UcProdutoVm.ProdutosAdicionados.Add(novoProduto);
+        }
+
+
+        private void PreencherCampo(ProdutoViewModel produto)
+        {
+            UcProdutoVm.Nome = produto.Nome;
+            UcProdutoVm.Valor = produto.Valor;
+
+            UcProdutoVm.Alteracao = true;
+        }
+        private void AlterarProduto()
+        {
 
         }
+
+        private void LimparCampo()
+        {
+            UcProdutoVm.Nome = "";
+            UcProdutoVm.Valor = 0;
+
+            UcProdutoVm.Alteracao = false;
+
+        }
+
+        private bool ValidarProduto()
+        {
+            if (string.IsNullOrEmpty(UcProdutoVm.Nome))
+            {
+                MessageBox.Show("O campo nome é obrigatório", "Atenção", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                return false;
+            }
+
+            return true;
+        }
+        
 
         private void BtnRemover_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
+        private void TxtValor_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
     }
 
     
