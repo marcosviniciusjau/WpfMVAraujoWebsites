@@ -46,7 +46,7 @@ namespace WpfAppSti3.View
                         break;
 
                     case nameof(BtnPedidos):
-                        //new UcClientes();
+                        Conteudo.Content = new UcPedido();
                         break;
                     default:
                         break;
