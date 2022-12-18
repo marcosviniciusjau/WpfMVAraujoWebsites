@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using WpfAppSti3.Data.Context;
 using WpfAppSti3.View.UserControls;
 
 namespace WpfAppSti3.View
@@ -24,7 +24,18 @@ namespace WpfAppSti3.View
         public Principal()
         {
             InitializeComponent();
+            Testes();
+
         }
+
+
+        private void Testes()
+        {
+            using var contexto = new WpfAppSti3Context();
+
+            contexto.Database.EnsureCreated();
+        }
+
 
         private void BtnMenu_Click(object sender, RoutedEventArgs e)
         {
