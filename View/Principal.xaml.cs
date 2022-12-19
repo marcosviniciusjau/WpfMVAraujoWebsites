@@ -23,20 +23,10 @@ namespace WpfAppSti3.View
         public Principal()
         {
             InitializeComponent();
-            Testes();
+            
 
         }
-
-
-        private void Testes()
-        {
-            using var context = new WpfAppSti3Context();
-
-            context.Database.EnsureCreated();
-        }
-
-
-        private void BtnMenu_Click(object sender, RoutedEventArgs e)
+    private void BtnMenu_Click(object sender, RoutedEventArgs e)
         {
             InicializarUc(sender);
         }
