@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfAppSti3.Data.Context;
 using WpfAppSti3.View.UserControls;
-
 namespace WpfAppSti3.View
 {
     /// <summary>
@@ -31,9 +30,9 @@ namespace WpfAppSti3.View
 
         private void Testes()
         {
-            using var contexto = new WpfAppSti3Context();
+            using var context = new WpfAppSti3Context();
 
-            contexto.Database.EnsureCreated();
+            context.Database.EnsureCreated();
         }
 
 
