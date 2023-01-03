@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
+ <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
@@ -9,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WpfAppSti3.Data\WpfAppSti3.Data.csproj" />
+    
   </ItemGroup>
 
 </Project>

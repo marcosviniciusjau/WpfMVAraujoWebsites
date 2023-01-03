@@ -32,7 +32,7 @@ namespace WpfAppSti3.View
             context.Database.EnsureCreated();
         }
 
-    private void BtnMenu_Click(object sender, RoutedEventArgs e)
+       private void BtnMenu_Click(object sender, RoutedEventArgs e)
         {
             InicializarUc(sender);
         }
