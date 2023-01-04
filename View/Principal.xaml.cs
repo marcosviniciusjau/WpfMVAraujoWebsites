@@ -23,9 +23,16 @@ namespace WpfAppSti3.View
         public Principal()
         {
             InitializeComponent();
-            Testes();
+            AplicarMigracoes();
 
         }
+
+        private void AplicarMigracoes()
+        {
+            using var context = new WpfAppSti3Context();
+            context.AplicarMigracoes();
+        }
+
         private void Testes()
         {
             using var context = new WpfAppSti3Context();
