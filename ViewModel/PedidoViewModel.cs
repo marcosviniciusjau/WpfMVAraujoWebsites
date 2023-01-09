@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace WpfAppSti3.ViewModel
 {
-    public class ProdutoViewModel
+    public class PedidoViewModel
     {
-        public long Id { get; set; }
-
-        public string Nome { get; set; }
+        public string FormPagamento { get; set; }
 
         public decimal Valor { get; set; }
+
+        public long ClienteId { get; set; }
+
+        public List<ItensPedidosViewModel> ItemPedido { get; set; }
     }
 }

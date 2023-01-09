@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppSti3.Business;
 using WpfAppSti3.View.UserControls;
 using WpfAppSti3.ViewModel;
 
@@ -33,8 +34,8 @@ namespace WpfAppSti3.View.UserControls
             InitializeComponent();
 
             DataContext = UcProdutoVm;
-            UcProdutoVm.ProdutosAdicionados = new ObservableCollection<ProdutoViewModel>();
-          
+
+            CarregarRegistros();
         }
 
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
@@ -56,9 +57,21 @@ namespace WpfAppSti3.View.UserControls
         private void BtnAlterar_Click(object sender, RoutedEventArgs e)
         {
             var produto = (sender as Button).Tag as ProdutoViewModel;
+           
             PreencherCampo(produto);
         }
 
+        private void BtnRemover_Click(object sender, RoutedEventArgs e)
+        {
+            var produto = (sender as Button).Tag as ProdutoViewModel;
+
+            RemoverProduto(produto.Id);
+        }
+
+        private void CarregarRegistros()
+        {
+            UcProdutoVm.ProdutosAdicionados = new ObservableCollection<ProdutoViewModel>(new ProdutoBusiness().Listar());
+        }
         private void AdicionarProduto()
         {
            
@@ -68,12 +81,15 @@ namespace WpfAppSti3.View.UserControls
                 Valor = UcProdutoVm.Valor
             };
 
-            UcProdutoVm.ProdutosAdicionados.Add(novoProduto);
+            new ProdutoBusiness().Adicionar(novoProduto);
+
+            CarregarRegistros();
         }
 
 
         private void PreencherCampo(ProdutoViewModel produto)
         {
+            UcProdutoVm.Id = produto.Id;
             UcProdutoVm.Nome = produto.Nome;
             UcProdutoVm.Valor = produto.Valor;
 
@@ -81,11 +97,33 @@ namespace WpfAppSti3.View.UserControls
         }
         private void AlterarProduto()
         {
+            var produtoAlteracao = new ProdutoViewModel
+            {
+                Id = UcProdutoVm.Id,
+                Nome = UcProdutoVm.Nome,
+                Valor = UcProdutoVm.Valor,
 
+            };
+            new ProdutoBusiness().Alterar(produtoAlteracao);
+
+            CarregarRegistros();
+        }
+
+        private void RemoverProduto(long id)
+        {
+            var resultado = MessageBox.Show("Tem certeza que deseja remover o produto?", "Atenção",  MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                new ProdutoBusiness().Remover(id);
+                CarregarRegistros();
+                LimparCampo();
+            }
         }
 
         private void LimparCampo()
         {
+            UcProdutoVm.Id = 0;
             UcProdutoVm.Nome = "";
             UcProdutoVm.Valor = 0;
 
@@ -106,10 +144,7 @@ namespace WpfAppSti3.View.UserControls
         }
         
 
-        private void BtnRemover_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+     
 
         private void TxtValor_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {

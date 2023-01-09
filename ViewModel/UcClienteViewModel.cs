@@ -9,6 +9,19 @@ namespace WpfAppSti3.ViewModel
 {
     public class UcClienteViewModel: PropertyChange
     {
+        private long _id;
+
+        public long Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+
+                OnPropertyChanged(nameof(Id));
+            }
+        }
+
         private string _nome;
 
         public string Nome
@@ -35,9 +48,9 @@ namespace WpfAppSti3.ViewModel
             }
         }
 
-        private int _cep;
+        private string _cep;
 
-        public int Cep
+        public string Cep
         {
             get => _cep;
             set

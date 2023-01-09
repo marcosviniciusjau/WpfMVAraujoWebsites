@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppSti3.Business;
 using WpfAppSti3.ViewModel;
 
 namespace WpfAppSti3.View.UserControls
@@ -29,8 +30,12 @@ namespace WpfAppSti3.View.UserControls
             InitializeComponent();
 
             DataContext= UcClienteVm;
-            UcClienteVm.ClientesAdicionados = new ObservableCollection<ClienteViewModel>();
-            UcClienteVm.DataNascimento = new System.DateTime(1990, 1, 1);
+     
+            
+           UcClienteVm.DataNascimento = new System.DateTime(1990, 1, 1);
+
+           CarregarRegistros();
+
         }
 
         private void BtnAdicionar_Click(object sender, RoutedEventArgs e)
@@ -63,19 +68,40 @@ namespace WpfAppSti3.View.UserControls
                 Cidade = UcClienteVm.Cidade,
             };
 
-            UcClienteVm.ClientesAdicionados.Add(novoCliente);
+            new ClienteBusiness().Adicionar(novoCliente);
+
+            CarregarRegistros();
+        }
+
+        private void CarregarRegistros()
+        {
+            UcClienteVm.ClientesAdicionados = new ObservableCollection<ClienteViewModel>(new ClienteBusiness().Listar());
         }
 
         private void AlterarCliente()
         {
+            var clienteAlteracao = new ClienteViewModel
+            {
+                Id = UcClienteVm.Id,
+                Nome = UcClienteVm.Nome,
+                DataNascimento = UcClienteVm.DataNascimento,
+                Cep = UcClienteVm.Cep,
+                Cidade = UcClienteVm.Cidade,
+                Endereco = UcClienteVm.Endereco,
+              
 
+            };
+            new ClienteBusiness().Alterar(clienteAlteracao);
+
+            CarregarRegistros();
         }
 
         private void LimparCampo()
         {
+            UcClienteVm.Id = 0;
             UcClienteVm.Nome = "";
             UcClienteVm.DataNascimento = new System.DateTime(1990, 1, 1);
-            UcClienteVm.Cep = 0;
+            UcClienteVm.Cep = "";
             UcClienteVm.Endereco = "";
             UcClienteVm.Cidade = "";
             UcClienteVm.Alteracao = false;
@@ -91,6 +117,7 @@ namespace WpfAppSti3.View.UserControls
 
         private void PreencherCampo(ClienteViewModel cliente)
         {
+            UcClienteVm.Id = cliente.Id;
             UcClienteVm.Nome = cliente.Nome;
             UcClienteVm.DataNascimento = cliente.DataNascimento;
             UcClienteVm.Cep = cliente.Cep;
@@ -102,9 +129,22 @@ namespace WpfAppSti3.View.UserControls
 
         private void BtnRemover_Click(object sender, RoutedEventArgs e)
         {
+            var cliente = (sender as Button).Tag as ClienteViewModel;
 
+            RemoverCliente(cliente.Id);
         }
 
+        private void RemoverCliente(long id)
+        {
+            var resultado = MessageBox.Show("Tem certeza que deseja remover o cliente?", "Atenção", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                new ClienteBusiness().Remover(id);
+                CarregarRegistros();
+                LimparCampo();
+            }
+        }
         private bool ValidarCliente()
         {
             if (string.IsNullOrEmpty(UcClienteVm.Nome))

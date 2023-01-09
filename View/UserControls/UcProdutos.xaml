@@ -72,8 +72,8 @@
                     Content="Alterar" Background="blue" Foreground="White" 
                     Width="100"
                     Style="{StaticResource BtnArredondado}" Click="BtnAlterar_Click"/>
-                            
-                            <Button Grid.Column="4" x:Name="BtnRemover"
+
+                            <Button Grid.Column="4" x:Name="BtnRemover" Tag="{Binding}"
                     Content="Remover" Background="red" Foreground="White" HorizontalAlignment="Left"
                     VerticalAlignment="Bottom" Margin="10,0,0,0"
                     Height="25" Width="100"

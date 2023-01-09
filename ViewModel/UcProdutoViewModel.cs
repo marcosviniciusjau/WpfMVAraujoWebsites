@@ -10,6 +10,20 @@ namespace WpfAppSti3.ViewModel
 {
     public class UcProdutoViewModel : PropertyChange
     {
+
+        private long _id;
+
+        public long Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+
+                OnPropertyChanged(nameof(Id));
+            }
+        }
+
         private string _nome;
 
         public string Nome
