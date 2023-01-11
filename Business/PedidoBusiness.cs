@@ -26,54 +26,14 @@ namespace WpfAppSti3.Business
 
             _context.Pedidos.Add(new Pedido
             {
-                Nome = pedidoViewModel.Nome,
-                Cidade = pedidoViewModel.Cidade,
-                DataNascimento = pedidoViewModel.DataNascimento,
-                Endereco = pedidoViewModel.Endereco,
-                Cep = pedidoViewModel.Cep
+                ClienteId = pedidoViewModel.ClienteId,
+                FormPagamento = pedidoViewModel.FormPagamento,
+                Valor = pedidoViewModel.Valor,
+              
             });
 
-            _context.SaveChanges();
         }
-
-        public void Alterar(PedidoViewModel pedidoViewModel)
-        {
-            var pedido = _context.Pedidos.First(x => x.Id == pedidoViewModel.Id);
-
-            pedido.Nome = pedidoViewModel.Nome;
-            pedido.Cep = pedidoViewModel.Cep;
-            pedido.Cidade = pedidoViewModel.Cidade;
-            pedido.DataNascimento = pedidoViewModel.DataNascimento;
-            pedido.Endereco = pedidoViewModel.Endereco;
-
-            _context.SaveChanges();
-
-        }
-
-        public void Remover(long id)
-        {
-            var pedido = _context.Clientes.First(x => x.Id == id);
-
-            _context.Clientes.Remove(pedido);
-            _context.SaveChanges();
-        }
-
-        public List<PedidoViewModel> Listar()
-        {
-
-            return _context.Pedidos.AsNoTracking()
-
-                .Select(s => new PedidoViewModel
-                {
-                    Id = s.Id,
-                    Nome = s.Nome,
-                    Cep = s.Cep,
-                    Cidade = s.Cidade,
-                    DataNascimento = s.DataNascimento,
-                    Endereco = s.Endereco
-
-                }).ToList()
-                .OrderBy(x => x.Nome).ToList();
-        }
+  
+     
     }
 }

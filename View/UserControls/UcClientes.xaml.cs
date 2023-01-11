@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -157,5 +159,64 @@ namespace WpfAppSti3.View.UserControls
             return true;
         }
 
+        private void TxtCep_LostFocus(object sender, RoutedEventArgs e)
+        {
+            BuscarCep((sender as TextBox).Text);
+        }
+
+        private void BuscarCep(string cep)
+        {
+
+            var client = new HttpClient
+            {
+                BaseAddress = new System.Uri("https://viacep.com.br/")
+            };
+
+            var response = client.GetAsync($"ws/{cep}/json").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var enderecoCompleto = response.Content.ReadAsStringAsync().Result;
+
+                var obj = JsonConvert.DeserializeObject<EnderecoViewModel>(enderecoCompleto);
+                if (obj.Erro)
+                {
+                    MessageBox.Show("O CEP não existe", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    LimparEndereco();
+                }
+                else
+                {
+
+                    UcClienteVm.Endereco = $"{obj.Logradouro} - {obj.Bairro}";
+                    UcClienteVm.Cidade = $"{obj.Localidade}/{obj.Uf}";
+                }
+            }
+            else
+            {
+                MessageBox.Show("O CEP é inválido", "Atenção", MessageBoxButton.OK, MessageBoxImage.Warning);
+                LimparEndereco();
+            }
+        }
+        private void LimparEndereco()
+        {
+            UcClienteVm.Endereco = "";
+            UcClienteVm.Cidade = "";
+            UcClienteVm.Cep = "";
+        }
     }
+}
+
+public class EnderecoViewModel
+{
+    public string Cep { get; set; }
+
+    public string Logradouro { get; set; }
+
+    public string Bairro { get; set; }
+
+    public string Localidade { get; set; }
+
+    public string Uf { get; set; }
+
+    public bool Erro { get;  set; }
 }

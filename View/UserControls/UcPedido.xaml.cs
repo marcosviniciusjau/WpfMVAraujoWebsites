@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppSti3.Business;
 using WpfAppSti3.ViewModel;
 
 namespace WpfAppSti3.View.UserControls
@@ -42,24 +43,17 @@ namespace WpfAppSti3.View.UserControls
 
         private void BtnFinalizarPedido_Click(object sender, RoutedEventArgs e)
         {
-
+            FinalizarPedido();
         }
 
         private void InicialzarOperacao()
         {
             DataContext = UcPedidoVm;
 
-            UcPedidoVm.ListaClientes = new ObservableCollection<ClienteViewModel>
-            {
-                new ClienteViewModel{ Nome =  "Cliente 1"},
-                new ClienteViewModel{ Nome =  "Cliente 2"},
-            };
+            UcPedidoVm.ListaClientes = new ObservableCollection<ClienteViewModel>(new ClienteBusiness().Listar());
+          
+            UcPedidoVm.ListaProdutos = new ObservableCollection<ProdutoViewModel> (new ProdutoBusiness().Listar());
 
-            UcPedidoVm.ListaProdutos = new ObservableCollection<ProdutoViewModel>
-            {
-                 new ProdutoViewModel{ Nome =  "Produto 1", Valor=10},
-                  new ProdutoViewModel{ Nome =  "Produto 2", Valor=20},
-            };
 
             UcPedidoVm.ListaPagamentos = new ObservableCollection<string>
             {
@@ -83,15 +77,56 @@ namespace WpfAppSti3.View.UserControls
                 Quantidade = UcPedidoVm.Quantidade,
                 ValorUnit = UcPedidoVm.ValorUnit,
 
-                ValorTotalItem = UcPedidoVm.Quantidade * UcPedidoVm.ValorUnit
+                ValorTotalItem = UcPedidoVm.Quantidade * UcPedidoVm.ValorUnit,
+                ProdutoId= produtoSelecionado.Id
 
             };
 
             UcPedidoVm.ItensAdicionados.Add(ItemVm);
 
             UcPedidoVm.ValorTotalPedidos = UcPedidoVm.ItensAdicionados.Sum(i => i.ValorTotalItem);
+           
+            LimparCamposProduto();
+        }
+        private void LimparCamposProduto()
+        {
+            UcPedidoVm.Quantidade = 1;
+            CmbProduto.SelectedItem = null;
+            UcPedidoVm.ValorUnit = 0;
         }
 
+        private void LimparTodosCampos()
+        {
+            UcPedidoVm.ItensAdicionados = new ObservableCollection<UcPedidoItemViewModel>();
+            UcPedidoVm.ValorTotalPedidos = 0;
+            CmbCliente.SelectedItem = null;
+            CmbFormPagamento.SelectedItem = null;
+
+            LimparCamposProduto();
+        }
+
+        private void FinalizarPedido()
+        {
+            var clienteSelecionado = CmbCliente.SelectedItem as ClienteViewModel;
+            var FormPagamentoSelecionado = CmbFormPagamento.SelectedItem as string;
+
+            var pedidoViewModel = new PedidoViewModel
+            {
+                ClienteId = clienteSelecionado.Id,
+                FormPagamento = FormPagamentoSelecionado,
+                Valor= UcPedidoVm.ValorTotalPedidos,
+                ItemPedido= UcPedidoVm.ItensAdicionados.Select(s=> new ItensPedidosViewModel
+               {
+                    ProdutoId = s.ProdutoId,
+                    Quantidade = s.Quantidade,
+                    Valor= (int)s.ValorTotalItem
+                }).ToList()
+            };
+            new PedidoBusiness().Adicionar(pedidoViewModel);
+            MessageBox.Show("Pedido Realizado com sucesso", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+            LimparTodosCampos();
+        }
+       
         private void BtnAdicionarItem_Click(object sender, RoutedEventArgs e)
         {
             AdicionarItem();

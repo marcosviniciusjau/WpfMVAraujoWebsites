@@ -55,12 +55,12 @@
 
                 <StackPanel>
                     <Label Content="Cep"/>
-                    <TextBox Text="{Binding Cep}"/>
+                    <TextBox x:Name="TxtCep" Text="{Binding Cep}" LostFocus="TxtCep_LostFocus"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
                     <Label Content="Endereço"/>
-                    <TextBox Text="{Binding Endereco}"/>
+                    <TextBox  Text="{Binding Endereco}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="4">
