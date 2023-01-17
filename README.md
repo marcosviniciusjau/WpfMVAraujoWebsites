@@ -1,9 +1,16 @@
 <div align="center">
-<b>WpfAppSti3</b>
-Aplicativo em WPF do curso ead da Sti3 contendo a tela de produtos, clientes e pedidos
+
+# Curso Desenvolvedor .Net Full Stack
 
 
+  <Img src="https://user-images.githubusercontent.com/72676389/210123496-47e2f131-e30f-4405-be47-1dc4bcb667c6.png"/>
+</div>
+
+### - Curso Lecionado pela STI3 sobre um sistema de vendas que possui o cadastro de pedidos, clientes e produtos
+
+## Demostração
 
 Demostração
-https://user-images.githubusercontent.com/82465988/212935765-33d546ea-1152-480f-b1f4-2009f1f552d9.mp4
+
+https://user-images.githubusercontent.com/82465988/212937766-34f381dd-0330-47d2-9a58-ac2db2997fdb.mp4
 
