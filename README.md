@@ -18,5 +18,6 @@ Este projeto é um sistema de gestão de loja desenvolvido em WPF com integraç�
 
 ## Demostração:
 
-https://github.com/marcosviniciusjau/WpfAppSti3/assets/82465988/585d8ab8-07fc-4fe2-a930-8c2f8b66296e
+https://github.com/marcosviniciusjau/WpfMVAraujoWebsites/assets/82465988/43626c85-9a85-4b9e-85d5-14ce38286160
+
 
