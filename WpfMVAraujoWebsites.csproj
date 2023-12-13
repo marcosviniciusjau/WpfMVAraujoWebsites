@@ -9,7 +9,7 @@
    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
  </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WpfAppSti3.Data\WpfAppSti3.Data.csproj" />
+    <ProjectReference Include="..\WpfAppSti3.Data\WpfMVAraujoWebsites.Data.csproj" />
   </ItemGroup>
 
 </Project>
