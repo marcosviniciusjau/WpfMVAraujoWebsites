@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:WpfAppSti3.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#EBEBEB">
+    <Grid Background="#5d0389">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="80"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Content="Produtos" FontWeight="Bold" FontSize="20" Foreground="#032338"/>
+        <Label Content="Produtos" FontWeight="Bold" FontSize="20" Foreground="#ffffff"/>
         <Border Style="{StaticResource BrdTituloTelas}"/>
 
         <Grid Grid.Row="1" Margin="10">
@@ -24,18 +24,18 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel>
-                <Label Content="Nome"/>
+                <Label Content="Nome" Foreground="#ffffff"/>
                 <TextBox Text="{Binding Nome}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="2">
-                <Label Content="Valor"/>
-                <TextBox Text="{Binding Valor}"
+                <Label Content="Valor" Foreground="#ffffff"/>
+                <TextBox Text="{Binding Valor, ConverterCulture=pt-BR, StringFormat=#\.#0.}"
                          PreviewTextInput="TxtValor_PreviewTextInput"/>
             </StackPanel>
 
             <Button Grid.Column="4" x:Name="BtnAdicionar"
-                    Background="Green" Foreground="White" HorizontalAlignment="Left"
+                    Background="#fe8101" Foreground="White" HorizontalAlignment="Left"
                     VerticalAlignment="Bottom" Margin="0,0,0,10"
                     Height="25" Width="150"
                    Click="BtnAdicionar_Click">

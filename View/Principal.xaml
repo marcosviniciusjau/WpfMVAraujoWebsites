@@ -5,27 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppSti3.View"
         xmlns:UserControls="clr-namespace:WpfAppSti3.View.UserControls" x:Class="WpfAppSti3.View.Principal"
-        mc:Ignorable="d"
-        Title="Mentoria Dev" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+        mc:Ignorable="d"  Background="#5d0389"
+        Title="MV Araújo Websites" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="125"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid Background="#FF03233B">
+        <Grid Background="#fe8101">
+
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="140"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="50"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Label Content="Mentoria" Foreground="White" 
-                   HorizontalContentAlignment="Center"
-                   VerticalContentAlignment="Center" 
-                   FontWeight="Bold" FontSize="20"/>
+            <Image Source="/View/Imagens/logo.png" 
+              Stretch="UniformToFill" 
+              HorizontalAlignment="Center" 
+              VerticalAlignment="Center"
+              Margin="0" 
+              Grid.Row="0"
+              Grid.ColumnSpan="2"
+               />
+
             <Border Style="{StaticResource BrdMenu}"/>
 
             <Button Grid.Row="1"

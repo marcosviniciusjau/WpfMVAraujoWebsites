@@ -6,14 +6,14 @@
              xmlns:local="clr-namespace:WpfAppSti3.View.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
-        <Grid Background="#EBEBEB">
+
+    <Grid Background="#5d0389">
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="120"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Content="Clientes" FontWeight="Bold" FontSize="20" Foreground="#032338"/>
+            <Label Content="Clientes" FontWeight="Bold" FontSize="20" Foreground="#ffffff"/>
             <Border Style="{StaticResource BrdTituloTelas}"/>
 
         <Grid Grid.Row="1" Margin="10,0">
@@ -31,12 +31,12 @@
 
 
                 <StackPanel>
-                    <Label Content="Nome"/>
+                    <Label Content="Nome" Foreground="#ffffff"/>
                     <TextBox Text="{Binding Nome}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
-                    <Label Content="Data de Nascimento"/>
+                    <Label Content="Data de Nascimento" Foreground="#ffffff"/>
                     <DatePicker SelectedDate="{Binding DataNascimento}"/>
                 </StackPanel>
                 
@@ -54,22 +54,22 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel>
-                    <Label Content="Cep"/>
+                    <Label Content="Cep" Foreground="#ffffff"/>
                     <TextBox x:Name="TxtCep" Text="{Binding Cep}" LostFocus="TxtCep_LostFocus"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
-                    <Label Content="Endereço"/>
+                    <Label Content="Endereço" Foreground="#ffffff"/>
                     <TextBox  Text="{Binding Endereco}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="4">
-                    <Label Content="Cidade"/>
-                    <TextBox Text="{Binding Cidade}"/>
+                    <Label Content="Cidade" Foreground="#ffffff"/>
+                    <TextBox Text="{Binding Cidade}" />
                 </StackPanel>
 
                 <Button Grid.Column="6" x:Name="BtnAdicionar"
-                    Background="Green" Foreground="White" HorizontalAlignment="Left"
+                    Background="#fe8101" Foreground="White" HorizontalAlignment="Left"
                     VerticalAlignment="Bottom" Margin="0,0,0,10"
                     Height="25" Width="150"
                    Click="BtnAdicionar_Click">
