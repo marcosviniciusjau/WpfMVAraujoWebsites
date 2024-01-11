@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WpfAppSti3.View.UserControls;
+using WpfMVAraujoWebsites.View.UserControls;
 
-namespace WpfAppSti3.ViewModel
+namespace WpfMVAraujoWebsites.ViewModel
 {
     public class UcProdutoViewModel : PropertyChange
     {

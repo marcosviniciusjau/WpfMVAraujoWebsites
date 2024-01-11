@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfAppSti3.ViewModel
+namespace WpfMVAraujoWebsites.ViewModel
 {
     public class UcPedidoViewModel: PropertyChange
     {

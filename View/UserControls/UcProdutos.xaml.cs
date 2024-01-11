@@ -15,11 +15,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfAppSti3.Business;
-using WpfAppSti3.View.UserControls;
-using WpfAppSti3.ViewModel;
+using WpfMVAraujoWebsites.Business;
+using WpfMVAraujoWebsites.View.UserControls;
+using WpfMVAraujoWebsites.ViewModel;
 
-namespace WpfAppSti3.View.UserControls
+namespace WpfMVAraujoWebsites.View.UserControls
 {
     /// <summary>
     /// Interação lógica para UcProdutos.xam

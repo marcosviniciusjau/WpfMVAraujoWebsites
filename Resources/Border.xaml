@@ -3,6 +3,7 @@
     <Style x:Key="BrdMenu" TargetType="Border">
         <Setter Property="BorderBrush" Value="#fe8101" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
+        
     </Style>
     
     <Style x:Key="BrdTituloTelas" TargetType="Border">
@@ -16,5 +17,6 @@
         <Setter Property="Margin" Value="5,0,5,0" />
         <Setter Property="BorderThickness" Value="0,0,0,1" />
     </Style>
-    
+   
 </ResourceDictionary>
+    

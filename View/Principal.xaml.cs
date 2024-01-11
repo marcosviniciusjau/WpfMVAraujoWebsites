@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using WpfAppSti3.Data.Context;
-using WpfAppSti3.View.UserControls;
-namespace WpfAppSti3.View
+using WpfMVAraujoWebsites.Data.Context;
+using WpfMVAraujoWebsites.View.UserControls;
+
+namespace WpfMVAraujoWebsites.View
 {
     /// <summary>
     /// Lógica interna para Principal.xaml
@@ -29,14 +19,9 @@ namespace WpfAppSti3.View
 
         private void AplicarMigracoes()
         {
-            using var context = new WpfAppSti3Context();
-            context.AplicarMigracoes();
-        }
 
-        private void Testes()
-        {
-            using var context = new WpfAppSti3Context();
-            context.Database.EnsureCreated();
+            using var context = new WpfMVAraujoWebsitesContext();
+            context.AplicarMigracoes();
         }
 
        private void BtnMenu_Click(object sender, RoutedEventArgs e)
@@ -66,6 +51,11 @@ namespace WpfAppSti3.View
                 }           
 
             }
+        }
+
+        private void Grid_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+
         }
     }
 }

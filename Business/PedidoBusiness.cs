@@ -4,20 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WpfAppSti3.Data.Context;
-using WpfAppSti3.Data.Entidades;
-using WpfAppSti3.View.UserControls;
-using WpfAppSti3.ViewModel;
+using WpfMVAraujoWebsites.Data.Context;
+using WpfMVAraujoWebsites.Data.Entidades;
+using WpfMVAraujoWebsites.View.UserControls;
+using WpfMVAraujoWebsites.ViewModel;
 
-namespace WpfAppSti3.Business
+namespace WpfMVAraujoWebsites.Business
 {
     public class PedidoBusiness
     {
-        private readonly WpfAppSti3Context _context;
+        private readonly WpfMVAraujoWebsitesContext _context;
 
         public PedidoBusiness()
         {
-            _context = new WpfAppSti3Context();
+            _context = new WpfMVAraujoWebsitesContext();
         }
 
         public void Adicionar(PedidoViewModel pedidoViewModel)

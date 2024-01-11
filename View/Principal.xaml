@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfAppSti3.View"
-        xmlns:UserControls="clr-namespace:WpfAppSti3.View.UserControls" x:Class="WpfAppSti3.View.Principal"
-        mc:Ignorable="d"  Background="#5d0389"
+        x:Class="WpfMVAraujoWebsites.View.Principal"
+        mc:Ignorable="d"
         Title="MV Araújo Websites" Height="768" Width="1024" WindowStartupLocation="CenterScreen">
 
     <Grid>
@@ -24,17 +23,9 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Image Source="/View/Imagens/logo.png" 
-              Stretch="UniformToFill" 
-              HorizontalAlignment="Center" 
-              VerticalAlignment="Center"
-              Margin="0" 
-              Grid.Row="0"
-              Grid.ColumnSpan="2"
-               />
-
             <Border Style="{StaticResource BrdMenu}"/>
 
+           
             <Button Grid.Row="1"
                     x:Name="BtnProdutos"
                     Content="Produtos" BorderThickness="0"
@@ -59,11 +50,10 @@
         </Grid>
 
         <ContentControl Grid.Column="1"
-                        x:Name="Conteudo"/>
-
-
-
-
+                        x:Name="Conteudo"
+                     >
+           
+        </ContentControl>
     </Grid>
 
 </Window>
