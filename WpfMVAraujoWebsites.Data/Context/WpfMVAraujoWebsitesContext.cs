@@ -14,7 +14,7 @@ namespace WpfMVAraujoWebsites.Data.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL("server=localhost;port=3307;user=root;password=Dgyv4064&;database=sistema_mvaraujowebsites;")
+            optionsBuilder.UseMySQL("server=localhost;port=3307;user=root;password=;database=sistema_mvaraujowebsites;")
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors()
                 .LogTo(x => Debug.WriteLine(x));
